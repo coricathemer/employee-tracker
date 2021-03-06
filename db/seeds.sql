@@ -1,9 +1,10 @@
 INSERT INTO department (id, dept_name)
 VALUES
-(1, 'interns'),
-(2, 'engineers'),
-(3, 'sales')
-(4, 'human resources');
+(1, 'Managers'),
+(2, 'Developers'),
+(3, 'Interns')
+(4, 'Sales')
+(5, 'Human Resources');
 
 INSERT INTO position (id, title, salary, department_id)
 VALUES
