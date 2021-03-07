@@ -1,21 +1,21 @@
-DROP DATABASE IF EXISTS employees
-CREATE DATABASE employees
+DROP DATABASE IF EXISTS employees;
+CREATE DATABASE employees;
 
-USE employees
+USE employees;
 
-CREATE TABLE department (
+CREATE TABLE departments (
   id INT PRIMARY KEY
   dept_name VARCHAR(30)
 );
 
-CREATE TABLE position (
+CREATE TABLE positions (
   id INT PRIMARY KEY
   title VARCHAR(30)
   salary DECIMAL 
   department_id INT
 );
 
-CREATE TABLE employee (
+CREATE TABLE employees (
   id INT PRIMARY KEY
   first_name VARCHAR(30)
   last_name VARCHAR(30)
