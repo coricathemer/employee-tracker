@@ -21,4 +21,5 @@ VALUES
 ('Luke', 'Skywalker', '1', NULL),
 ('Rick', 'Grimes', '2', '5'),
 ('Kylo', 'Ren', '3', NULL), 
-('John', 'Doe', '4', '3');
+('Teresa', 'Mendoza', '4', '3'),
+('David', 'Schitt', '5', NULL);

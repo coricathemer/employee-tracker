@@ -1,11 +1,22 @@
-const inquirer = require('inquirer');
+const {prompt} = require('inquirer');
 const table = require('console.table');
-// const connection = require('./db/connection');
+const db = require('./db');
 
-function mainMenu(){
-  //startup menu 
 
-  inquirer.prompt(
+// db.viewDepartments()
+// .then(departments => 
+//   console.log(departments)
+//   );
+// db.viewRoles()
+// .then(roles => 
+//   console.log(roles)
+//   );
+// db.viewEmployees()
+// .then(employees => 
+//   console.log(employees)
+//   );
+
+  const initialQuestion = [
     {
       type: 'list',
       name: 'choice',
@@ -21,13 +32,18 @@ function mainMenu(){
 
       ]
 
+    }, 
+    {
+      type: 'list', 
+      name: 'choice',
+      message: 'What '
     }
-  )
-
+  ]
+  return prompt(initialQuestion)
   .then(userChoice => {
     switch(userChoice.choice){
       case 'View Department':
-        viewDept();
+        viewDepartments();
         console.log('You chose to viewDept')
         break;
       case 'viewRoles':
@@ -50,37 +66,40 @@ function mainMenu(){
         break;
     }
   })
-}
 
-connection.query(
-  'SELECT * FROM departments',
-    function viewDept(err, results, fields) { 
-      if(err) throw err, 
-      console.log(results);
-      console.log(fields);
-      console.log(viewDept);
+  function viewDepartments() {
+    db.viewDepartments()
+    .then(departments =>
+      console.log(departments)
+      );
   }
-);
+  function viewRoles() {
+    db.viewRoles()
+    .then(roles => 
+      console.log(roles)
+      );
+  }
+   
+  function viewEmployees() {
+    db.viewEmployees()
+    .then(employees =>
+      console.log(employees)
+      );
+  }
+   
+  function addDept() {
+  }
+   
+  function addRole() {
+  }
+   
+  function addEmployee() {
+  }
+   
+  function updateEmployee() {
+  }
+  
 
-function viewRoles() {
-}
-
-function viewEmployees() {
-}
-
-function addDept() {
-}
-
-function addRole() {
-}
-
-function addEmployee() {
-}
-
-function updateEmployee() {
-}
-
-mainMenu()
 // with placeholder
 // connection.query(
 //   'SELECT * FROM `employees` WHERE `employees` = ? AND `id` > ?',
