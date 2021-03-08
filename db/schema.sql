@@ -4,21 +4,21 @@ CREATE DATABASE employees;
 USE employees;
 
 CREATE TABLE departments (
-  id INT PRIMARY KEY
+  id INT PRIMARY KEY AUTO_INCREMENT,
   dept_name VARCHAR(30)
 );
 
-CREATE TABLE positions (
-  id INT PRIMARY KEY
-  title VARCHAR(30)
-  salary DECIMAL 
+CREATE TABLE roles (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(30),
+  salary DECIMAL, 
   department_id INT
 );
 
 CREATE TABLE employees (
-  id INT PRIMARY KEY
-  first_name VARCHAR(30)
-  last_name VARCHAR(30)
-  role_id INT
-  manager_id INT
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  role_id INT AUTO_INCREMENT,
+  manager_id INT AUTO_INCREMENT
 );
