@@ -2,7 +2,6 @@ const { prompt } = require('inquirer');
 require('console.table');
 const db = require('./db');
 
-
 // db.viewDepartments()
 // .then(departments => 
 //   console.log(departments)
@@ -28,58 +27,68 @@ const initialQuestion = [
       {name: 'Add department', value: 'addDept'},
       {name: 'Add a role', value: 'addRole' },
       {name: 'Add an employee', value: 'addEmployee'},
-      {name: 'Update and employee role', value: 'updateEmployee'}
+      {name: 'Update and employee role', value: 'updateEmployee'},
+      // {name: 'I am done making changes', value: 'noChanges'}
 
     ]
 
   }
 ]
-prompt(initialQuestion)
-.then(userChoice => {
-  switch(userChoice.choice){
-    case 'View Department':
-      viewDepartments();
-      console.log('You chose to viewDept')
-      break;
-    case 'viewRoles':
-      viewRoles();
-      break;
-    case 'viewEmployees':
-      viewEmployees();
-      break;
-    case 'addDept':
-      addDept();
-      break;
-    case 'addRole':
-      addRole();
-      break;
-    case 'addEmployee':
-      addEmployee();
-      break;
-    case 'updateEmployee':
-      updateEmployee();
-      break;
-  }
-})
-
+function mainMenu(){
+  prompt(initialQuestion)
+  .then(userChoice => {
+    switch(userChoice.choice){
+      case 'View Department':
+        viewDepartments();
+        console.log('You chose to viewDept')
+        break;
+      case 'viewRoles':
+        viewRoles();
+        break;
+      case 'viewEmployees':
+        viewEmployees();
+        break;
+      case 'addDept':
+        addDept();
+        break;
+      case 'addRole':
+        addRole();
+        break;
+      case 'addEmployee':
+        addEmployee();
+        break;
+      case 'updateEmployee':
+        updateEmployee();
+        break;
+      // case 'noChanges':
+      //   noChanges();
+      //   break;
+    }
+  })
+}
   function viewDepartments() {
     db.viewDepartments()
-    .then(departments =>
-      console.log(departments[0])
-      );
+    .then((departments) => { 
+      console.table(departments[0])
+      mainMenu()
+    });
   }
   function viewRoles() {
     db.viewRoles()
-    .then(positions => 
-      console.log(positions[0])
-      );
+    .then((positions) => { 
+      console.table(positions[0])
+      mainMenu()
+    });
   } 
   function viewEmployees() {
     db.viewEmployees()
-    .then(employees =>
+    .then((employees) => {
       console.table(employees[0])
-      );
+      mainMenu()
+    });
     }
+    
+mainMenu();
     
     // employees.forEach(employee => {
     //   console.log(`ID: ${employee.id} | NAME: ${employee.first_name} ${employee.last_name} | Role ID: ${employee.role_id} | Manager ID: ${employee.manger_id}`);

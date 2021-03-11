@@ -9,7 +9,7 @@ CREATE TABLE departments (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE roles (
+CREATE TABLE positions (
   id INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(30),
   salary DECIMAL, 
