@@ -14,13 +14,13 @@ class DB {
 
   viewRoles() {
     return this.connection.promise().query(
-      'SELECT id, title, salary, department_id FROM roles'
+      'SELECT id, title, salary, department_id FROM employeeDB.positons'
     );
   }
 
   viewEmployees() {
     return this.connection.promise().query(
-      'SELECT id, first_name, last_name, role_id, manager_id FROM employees'
+      'SELECT * FROM employeeDB.employees'
     );
   }
 
